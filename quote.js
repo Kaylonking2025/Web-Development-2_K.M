@@ -41,7 +41,23 @@ const occupancyInput = document. getElementById('occupancy-input')
      numberOfFloors.style.display = 'none'
      maximumOccupancy.style.display = 'none'
   })
-// -------------------------The JavaScript Below is event listener attached to input field math----------------------------
-elevatorsInput.addEventListener('input',
-    console.log 
-)
+// -------------------------The JavaScript Below is event listener attached to input field math to get it to respond properly----------------------------
+const elevatorsRequired = document.getElementById('elevatorsRequired')
+elevatorsInput.addEventListener('input', () => {
+  console.log(elevatorsInput.value)
+  elevatorsRequired.value = elevatorsInput.value
+})
+apartmentsInput.addEventListener('input', () => {
+  console.log(apartmentsInput.value)
+  console.log(floorsInput.value)
+  const averageOfApartments = apartmentsInput.value / floorsInput.value 
+  console.log(averageOfApartments)
+  const requiredElevators = averageOfApartments / 6 
+  console.log(requiredElevators)
+  const elevatorBanks = floorsInput.value / 20
+  console.log(elevatorBanks)
+  finaleElevatorNumber= requiredElevators * elevatorBanks
+  console.log(finaleElevatorNumber)
+  elevatorsRequired.value = finaleElevatorNumber 
+})
+
