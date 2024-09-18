@@ -60,4 +60,59 @@ apartmentsInput.addEventListener('input', () => {
   console.log(finaleElevatorNumber)
   elevatorsRequired.value = finaleElevatorNumber 
 })
+occupancyInput.addEventListener('input', () => {
+  console.log(occupancyInput.value)
+  console.log(floorsInput.value)
+  const totalNumberOfOccupants = occupancyInput.value * floorsInput.value
+  console.log(totalNumberOfOccupants)
+  const  elevatorsNeed = totalNumberOfOccupants / 200
+  console.log(elevatorsNeed)
+  const elevatorBanks = floorsInput.value / 10
+  console.log(elevatorBanks)
+  const totalNumberOfElevators = elevatorsNeed *  elevatorBanks + elevatorBanks
+  console.log(totalNumberOfElevators)
+  elevatorsRequired.value = totalNumberOfElevators
+})
+// -----------------------------------------------------------------Total Cost information for JavaScript -------------------------------------------------------------
+const costPerUnit = document.getElementById('costPerUnit')
+const installationFee = document.getElementById('installationFee')
+const totalCost= document.getElementById('totalCost')
+// ---------------------------------------------------------Reflects the cost in the the input field-------------------------------
+standard.addEventListener('click', () => {
+  costPerUnit.value = 8000
+  const endCost = elevatorsRequired.value * 8000
+  console.log(endCost)
+  const  standardFee = endCost * 0.10
+  console.log(standardFee)
+  const finalPrice = endCost + standardFee
+  console.log(finalPrice)
+   installationFee.value = standardFee
+   totalCost.value = finalPrice
+})
+premium.addEventListener('click', () => {
+  costPerUnit.value = 12000
+  const endCost = elevatorsRequired.value * 12000
+  console.log(endCost)
+  const  premiumFee = endCost *  0.012
+  console.log(premiumFee)
+  const finalPrice = endCost + premiumFee
+  console.log(finalPrice)
+   installationFee.value = premiumFee
+   totalCost.value = finalPrice
+})
+excelium.addEventListener('click', () => {
+  costPerUnit.value = 15000
+  const endCost = elevatorsRequired.value * 15000
+  console.log(endCost)
+  const  exceliumFee = endCost * 0.015
+  console.log(exceliumFee)
+  const finalPrice = endCost + exceliumFee
+  console.log(finalPrice)
+   installationFee.value = exceliumFee
+   totalCost.value = finalPrice
+})
 
+// standard Fee 10%
+
+// Premium Fee 15%
+// Execelium Fee  20%
