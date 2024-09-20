@@ -16,7 +16,7 @@ const floorsInput = document.getElementById('floors-input')
 const elevatorsInput = document.getElementById('elevators-input')
 const occupancyInput = document. getElementById('occupancy-input')
 
-//---------------------------------------Added Event listeners----------------------------------------------------------------
+//---------------------------------------Styling to make tabs appear when going to the webpage----------------------------------------------------------------
  numberOfApartments.style.display = 'none'
  numberOfFloors.style.display = 'none'
  numberOfElevators.style.display = 'none'
@@ -44,33 +44,39 @@ const occupancyInput = document. getElementById('occupancy-input')
 // -------------------------The JavaScript Below is event listener attached to input field math to get it to respond properly----------------------------
 const elevatorsRequired = document.getElementById('elevatorsRequired')
 elevatorsInput.addEventListener('input', () => {
-  console.log(elevatorsInput.value)
   elevatorsRequired.value = elevatorsInput.value
+
+})
+
+floorsInput.addEventListener('input', () => {
+  if (residential.checked) {
+    const averageOfApartments = Math.ceil(apartmentsInput.value / floorsInput.value) 
+    const requiredElevators =  Math.ceil(averageOfApartments / 6)
+    const elevatorBanks =  Math.ceil(floorsInput.value / 20)
+    finaleElevatorNumber=  Math.ceil(requiredElevators * elevatorBanks)
+    elevatorsRequired.value = finaleElevatorNumber 
+    
+  }
+  if (commercial.checked) { 
+    const totalNumberOfOccupants =  Math.ceil(occupancyInput.value * floorsInput.value)
+    const  elevatorsNeed =  Math.ceil(totalNumberOfOccupants / 200)
+    const elevatorBanks =  Math.ceil(floorsInput.value / 10)
+    const totalNumberOfElevators =  Math.ceil(elevatorsNeed *  elevatorBanks + elevatorBanks)
+    elevatorsRequired.value = totalNumberOfElevators
+  }
 })
 apartmentsInput.addEventListener('input', () => {
-  console.log(apartmentsInput.value)
-  console.log(floorsInput.value)
-  const averageOfApartments = apartmentsInput.value / floorsInput.value 
-  console.log(averageOfApartments)
-  const requiredElevators = averageOfApartments / 6 
-  console.log(requiredElevators)
-  const elevatorBanks = floorsInput.value / 20
-  console.log(elevatorBanks)
-  finaleElevatorNumber= requiredElevators * elevatorBanks
-  console.log(finaleElevatorNumber)
+  const averageOfApartments = Math.ceil(apartmentsInput.value / floorsInput.value) 
+  const requiredElevators =  Math.ceil(averageOfApartments / 6)
+  const elevatorBanks =  Math.ceil(floorsInput.value / 20)
+  finaleElevatorNumber=  Math.ceil(requiredElevators * elevatorBanks)
   elevatorsRequired.value = finaleElevatorNumber 
 })
 occupancyInput.addEventListener('input', () => {
-  console.log(occupancyInput.value)
-  console.log(floorsInput.value)
-  const totalNumberOfOccupants = occupancyInput.value * floorsInput.value
-  console.log(totalNumberOfOccupants)
-  const  elevatorsNeed = totalNumberOfOccupants / 200
-  console.log(elevatorsNeed)
-  const elevatorBanks = floorsInput.value / 10
-  console.log(elevatorBanks)
-  const totalNumberOfElevators = elevatorsNeed *  elevatorBanks + elevatorBanks
-  console.log(totalNumberOfElevators)
+  const totalNumberOfOccupants =  Math.ceil(occupancyInput.value * floorsInput.value)
+  const  elevatorsNeed =  Math.ceil(totalNumberOfOccupants / 200)
+  const elevatorBanks =  Math.ceil(floorsInput.value / 10)
+  const totalNumberOfElevators =  Math.ceil(elevatorsNeed *  elevatorBanks + elevatorBanks)
   elevatorsRequired.value = totalNumberOfElevators
 })
 // -----------------------------------------------------------------Total Cost information for JavaScript -------------------------------------------------------------
@@ -78,38 +84,30 @@ const costPerUnit = document.getElementById('costPerUnit')
 const installationFee = document.getElementById('installationFee')
 const totalCost= document.getElementById('totalCost')
 // ---------------------------------------------------------Reflects the cost in the the input field-------------------------------
+// MY CALCULATIONS 
 standard.addEventListener('click', () => {
   costPerUnit.value = 8000
-  const endCost = elevatorsRequired.value * 8000
-  console.log(endCost)
-  const  standardFee = endCost * 0.10
-  console.log(standardFee)
-  const finalPrice = endCost + standardFee
-  console.log(finalPrice)
+  const endCost = Math.ceil(elevatorsRequired.value * 8000)
+  const  standardFee = Math.ceil(endCost * 0.10)
+  const finalPrice = Math.ceil(endCost + standardFee)
    installationFee.value = standardFee
-   totalCost.value = finalPrice
+   totalCost.value = finalPrice.toFixed(2)
 })
 premium.addEventListener('click', () => {
   costPerUnit.value = 12000
-  const endCost = elevatorsRequired.value * 12000
-  console.log(endCost)
-  const  premiumFee = endCost *  0.012
-  console.log(premiumFee)
-  const finalPrice = endCost + premiumFee
-  console.log(finalPrice)
+  const endCost = Math.ceil(elevatorsRequired.value * 12000)
+  const  premiumFee = Math.ceil(endCost *  0.15)
+  const finalPrice = Math.ceil(endCost + premiumFee)
    installationFee.value = premiumFee
-   totalCost.value = finalPrice
+   totalCost.value = finalPrice.toFixed(2)
 })
 excelium.addEventListener('click', () => {
   costPerUnit.value = 15000
-  const endCost = elevatorsRequired.value * 15000
-  console.log(endCost)
-  const  exceliumFee = endCost * 0.015
-  console.log(exceliumFee)
-  const finalPrice = endCost + exceliumFee
-  console.log(finalPrice)
+  const endCost = Math.ceil(elevatorsRequired.value * 15000)
+  const  exceliumFee = Math.ceil(endCost * 0.20)
+  const finalPrice = Math.ceil(endCost + exceliumFee)
    installationFee.value = exceliumFee
-   totalCost.value = finalPrice
+   totalCost.value = finalPrice.toFixed(2)
 })
 
 // standard Fee 10%
