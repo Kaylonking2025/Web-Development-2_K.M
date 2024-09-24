@@ -1,0 +1,13 @@
+/* styles.css */
+.building{
+    color: rgb(52, 55, 240) !important; font-size: large;
+}
+
+.product {
+    color: rgb(219, 13, 13); font-size: large;
+}
+
+.elevators{
+    font-size: 16px;
+    color: rgba(12, 195, 232, 0.137);
+}

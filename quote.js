@@ -35,13 +35,21 @@ const occupancyInput = document. getElementById('occupancy-input')
     numberOfFloors.style.display = 'block'
     numberOfElevators.style.display = 'none'
     maximumOccupancy.style.display = 'none'
+    floorsInput.value = 0
+    elevatorsInput.value = 0
+    occupancyInput.value = 0 
+    apartmentsInput.value = 0
   })
   // Commercial
   commercial.addEventListener('click', () => {
     numberOfFloors.style.display = 'block'
     maximumOccupancy.style.display = 'block'
-     numberOfApartments.style.display = 'none'
-      numberOfElevators.style.display = 'none'
+    numberOfApartments.style.display = 'none'
+    numberOfElevators.style.display = 'none' 
+    elevatorsInput.value = 0
+    occupancyInput.value = 0 
+    apartmentsInput.value = 0
+    floorsInput.value = 0
   })
   // Industrial 
   industrial.addEventListener('click', () => {
@@ -49,6 +57,10 @@ const occupancyInput = document. getElementById('occupancy-input')
      numberOfApartments.style.display = 'none'
      numberOfFloors.style.display = 'none'
      maximumOccupancy.style.display = 'none'
+     occupancyInput.value = 0 
+     floorsInput.value = 0
+     apartmentsInput.value = 0
+     elevatorsInput.value = 0
   })
 // Elevators Required Field calculates how many elevators are required.
 const elevatorsRequired = document.getElementById('elevatorsRequired')

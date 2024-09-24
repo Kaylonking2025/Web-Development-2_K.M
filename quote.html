@@ -16,6 +16,7 @@
 
 		<!-- CORE CSS -->
 		<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="quote.css" rel="stylesheet" type="text/css" />
 
 		<!-- REVOLUTION SLIDER -->
 		<link href="assets/plugins/slider.revolution/css/extralayers.css" rel="stylesheet" type="text/css" />
@@ -197,10 +198,10 @@
 
 			</div>
 <!---------------------------------------------- Form Fill Out Area ------------------------------------------->
-		                  <div>
-							<form>
+                       	<div class="container mt-5">
+							<form>          
 							   <fieldset class="row mb-3 ml-5">
-								   <legend class="col-form-label col-sm-2 pt-0">Building Type</legend>
+								   <legend class="col-form-label col-sm-2 pt-0"><b class="building">Building Type</b></legend>
 								   <div class="form-check form-check-inline">
 									   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="residential" value="option1">
 									   <label class="form-check-label" for="inlineRadio1">Residential</label>
@@ -214,28 +215,27 @@
 									   <label class="form-check-label" for="inlineRadio3">Industrial</label>
 									 </div>
 								 </fieldset>
-								 <div>
-								   <form class="row g-3">
-								   <div class="col-md-12" id="number-of-apartments">
+								 <div class="row g-3">
+								   <div class="col-10" id="number-of-apartments">
 									 <label for="inputEmail4" class="form-label">Number of Apartments</label>
 									 <input type="email" class="form-control" id="apartments-input">
 								   </div>
-								   <div class="col-12" id="number-of-floors">
-									 <label for="inputAddress" class="form-label">Number of Floors</label>
+								   <div class="col-10" id="number-of-floors">
+									 <label for="inputAddress" class="form-label" class="elevator" >Number of Floors</label>
 									 <input type="text" class="form-control" id="floors-input">
 								   </div>
-								   <div class="col-12"id="number-of-elevators" >
-									 <label for="inputAddress2" class="form-label">Number of Elevators</label>
+								   <div class="col-10"id="number-of-elevators" >
+									 <label for="inputAddress2" class="form-label" class="elevator">Number of Elevators</label>
 									 <input type="text" class="form-control" id="elevators-input">
 								   </div>
-								   <div class="col-md-12" id="maximum-occupancy">
-									   <label for="inputCity" class="form-label">Maximum Occupancy</label>
+								   <div class="col-md-10" id="maximum-occupancy">
+									   <label for="inputCity" class="form-label"class="elevator">Maximum Occupancy</label>
 									   <input type="text" class="form-control" id="occupancy-input">
 									 </div>
-								   
+								    </div>
 							   <div>
 								<fieldset class="row mb-3 ml-5">
-									<legend class="col-form-label col-sm-2 pt-0">Product Tier</legend>
+									<legend class="col-form-label col-sm-2 pt-0"><b class="product">Product Tier</b></legend>
 									<div class="form-check form-check-inline">
 										<input class="form-check-input" type="radio" name="inlineRadioOptions1" id="standard" value="option1">
 										<label class="form-check-label" for="inlineRadio1">Standard</label>
@@ -277,9 +277,7 @@
 				</form>
 			</div>
 			
-			<div >
-
-			</div>
+		
 
 
 
