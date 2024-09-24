@@ -35,7 +35,7 @@ const occupancyInput = document. getElementById('occupancy-input')
     numberOfFloors.style.display = 'block'
     numberOfElevators.style.display = 'none'
     maximumOccupancy.style.display = 'none'
-    floorsInput.value = 0
+    floorsInput.value = 0 
     elevatorsInput.value = 0
     occupancyInput.value = 0 
     apartmentsInput.value = 0
@@ -93,6 +93,30 @@ apartmentsInput.addEventListener('input', () => {
   const elevatorBanks =  Math.ceil(floorsInput.value / 20)
   finaleElevatorNumber =  Math.ceil(requiredElevators * elevatorBanks)
   elevatorsRequired.value = finaleElevatorNumber 
+
+  if(standard.checked){
+    costPerUnit.value = formatter.format(8000)
+    const endCost = Math.ceil(elevatorsRequired.value * 8000)
+    const  standardFee = Math.ceil(endCost * 0.10)
+    const finalPrice = Math.ceil(endCost + standardFee)
+     installationFee.value = formatter.format(standardFee)
+     totalCost.value = formatter.format(finalPrice.toFixed(2))
+  }else if(premium.checked){
+    costPerUnit.value = formatter.format(12000)
+    const endCost = Math.ceil(elevatorsRequired.value * 12000)
+    const  premiumFee = Math.ceil(endCost *  0.15)
+    const finalPrice = Math.ceil(endCost + premiumFee)
+    installationFee.value = formatter.format(premiumFee)
+    totalCost.value =  formatter.format(finalPrice.toFixed(2))
+  }else if(excelium.checked){
+    costPerUnit.value = formatter.format(15000)
+    const endCost = Math.ceil(elevatorsRequired.value * 15000)
+    const  exceliumFee = Math.ceil(endCost * 0.20)
+    const finalPrice = Math.ceil(endCost + exceliumFee)
+    installationFee.value = formatter.format (exceliumFee)
+    totalCost.value = formatter.format(finalPrice.toFixed(2))
+  }
+
 })
 occupancyInput.addEventListener('input', () => {
   const totalNumberOfOccupants =  Math.ceil(occupancyInput.value * floorsInput.value)
@@ -100,39 +124,68 @@ occupancyInput.addEventListener('input', () => {
   const elevatorBanks =  Math.ceil(floorsInput.value / 10)
   const totalNumberOfElevators =  Math.ceil(elevatorsNeed *  elevatorBanks + elevatorBanks)
   elevatorsRequired.value = totalNumberOfElevators
+
+  if(standard.checked){
+    costPerUnit.value = formatter.format(8000)
+    const endCost = Math.ceil(elevatorsRequired.value * 8000)
+    const  standardFee = Math.ceil(endCost * 0.10)
+    const finalPrice = Math.ceil(endCost + standardFee)
+    installationFee.value = formatter.format(standardFee)
+    totalCost.value = formatter.format(finalPrice.toFixed(2))
+  }else if(premium.checked){
+    costPerUnit.value = formatter.format(12000)
+    const endCost = Math.ceil(elevatorsRequired.value * 12000)
+    const  premiumFee = Math.ceil(endCost *  0.15)
+    const finalPrice = Math.ceil(endCost + premiumFee)
+    installationFee.value = formatter.format(premiumFee)
+    totalCost.value =  formatter.format(finalPrice.toFixed(2))
+  }else if(excelium.checked){
+    costPerUnit.value = formatter.format(15000)
+    const endCost = Math.ceil(elevatorsRequired.value * 15000)
+    const  exceliumFee = Math.ceil(endCost * 0.20)
+    const finalPrice = Math.ceil(endCost + exceliumFee)
+    installationFee.value = formatter.format (exceliumFee)
+    totalCost.value = formatter.format(finalPrice.toFixed(2))
+  }
 })
 // Input fields on the webpage 
 const costPerUnit = document.getElementById('costPerUnit')
 const installationFee = document.getElementById('installationFee')
 const totalCost = document.getElementById('totalCost')
 
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+
+});
+
 // Standard Caculates Total Cost and rounds it to nearest whole number
 standard.addEventListener('click', () => {
-  costPerUnit.value = 8000
+  costPerUnit.value = formatter.format(8000)
   const endCost = Math.ceil(elevatorsRequired.value * 8000)
   const  standardFee = Math.ceil(endCost * 0.10)
   const finalPrice = Math.ceil(endCost + standardFee)
-   installationFee.value = standardFee
-   totalCost.value = finalPrice.toFixed(2)
+   installationFee.value = formatter.format(standardFee)
+   totalCost.value = formatter.format(finalPrice.toFixed(2))
 })
 // Premium calculates Total Cost and rounds it to the nearest whole number
 premium.addEventListener('click', () => {
-  costPerUnit.value = 12000
+  costPerUnit.value = formatter.format(12000)
   const endCost = Math.ceil(elevatorsRequired.value * 12000)
   const  premiumFee = Math.ceil(endCost *  0.15)
   const finalPrice = Math.ceil(endCost + premiumFee)
-   installationFee.value = premiumFee
-   totalCost.value = finalPrice.toFixed(2)
+   installationFee.value = formatter.format(premiumFee)
+   totalCost.value =  formatter.format(finalPrice.toFixed(2))
 })
 
 // Excelium calculates Total Cost and rounds it to the nearest whole number 
 excelium.addEventListener('click', () => {
-  costPerUnit.value = 15000
+  costPerUnit.value = formatter.format(15000)
   const endCost = Math.ceil(elevatorsRequired.value * 15000)
   const  exceliumFee = Math.ceil(endCost * 0.20)
   const finalPrice = Math.ceil(endCost + exceliumFee)
-   installationFee.value = exceliumFee
-   totalCost.value = finalPrice.toFixed(2)
+   installationFee.value = formatter.format (exceliumFee)
+   totalCost.value = formatter.format(finalPrice.toFixed(2))
 })
 
 
